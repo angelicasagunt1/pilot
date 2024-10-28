@@ -10,6 +10,8 @@ services:
     networks:
       - symfony
     container_name: symfony_app
+    environment:
+      - DATABASE_URL=mysql://user:password@db:3306/db_name
 
   web:
     image: nginx:alpine
@@ -24,6 +26,24 @@ services:
       - symfony
     container_name: symfony_web
 
+  db:  # Asegúrate de que el nombre del servicio aquí sea 'db'
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: db_name
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - symfony
+    container_name: symfony_db
+
 networks:
   symfony:
     driver: bridge
+
+volumes:
+  db_data:  # Define el volumen para la base de datos
