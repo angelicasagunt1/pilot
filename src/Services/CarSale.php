@@ -23,8 +23,6 @@ class CarSale {
      */
     public function processSale(int $carId, float $price, int $installments, string $customerName): array
     {
-        $this->validateSaleData($customerName, $installments);
-
         $car = $this->carRepository->find($carId);
 
         if (empty($car)) {
@@ -44,19 +42,5 @@ class CarSale {
             'total_amount' => $totalPrice,
             'amount_per_installment' => $totalPrice / $installments,
         ];
-    }
-
-    /**
-     * @throws InvalidDataException
-     */
-    private function validateSaleData(string $customerName, int $installments): void
-    {
-        if (empty($customerName)) {
-            throw new InvalidDataException("The customer name is required.");
-        }
-
-        if ($installments <= 0) {
-            throw new InvalidDataException("The number of installments must be greater than zero.");
-        }
     }
 }
