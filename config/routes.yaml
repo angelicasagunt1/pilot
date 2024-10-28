@@ -1,4 +1,4 @@
 api_sale:
-  path: /api/sale
+  path: /api/car/sell
   controller: App\Controller\CarSaleController::sellCar
   methods: POST
