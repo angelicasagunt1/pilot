@@ -39,7 +39,7 @@ class CarSale {
             'buyer_data' => $customerName,
             'car_data' => [
                 'name' => $car->getName(),
-                'price' => $car->getPrice()
+                'price' => $price
             ],
             'total_amount' => $totalPrice,
             'amount_per_installment' => $totalPrice / $installments,
