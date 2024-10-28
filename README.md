@@ -29,7 +29,7 @@ CarSale es una pequeña prueba API construida en Symfony que gestiona la venta d
    
 ## Endpoint
  
-**Vender Auto (POST) /api/sale**
+**Vender Auto (POST) /api/car/sell**
    ```bash
     {
     "car_id": "1",
